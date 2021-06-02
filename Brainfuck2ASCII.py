@@ -1,5 +1,8 @@
 def Interpretor(code, entrees = None):
-    entrees = [float for float in entrees]
+    if entrees != None :
+            entrees = entrees.split(" ")
+            for input in entrees:
+                input = int(input)
     code = [char for char in code]
     iteration = False
     array = [0]
@@ -21,4 +24,5 @@ def Interpretor(code, entrees = None):
             array[l] = entrees[0]
             pop(0)
         if code[0] == '.' :
-            print(array[l])
+            print('int -> {} char/ASCII -> {}'.format(array[l],chr(array[l])))
+        code.pop(0)
