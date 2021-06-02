@@ -11,7 +11,7 @@ def BrainF(code, entrees = None):
     i = 0 #number of iterations to read your code
     array = [i]# the array you're 'writing in'
     l = 0#the memory pointer index in array
-    g = 0#on which iteration we are in mean on which '[]'
+    g = 0#on which iteration we are, I mean on which '[]'
     while len(code)>i:
         print(array)
         if code[i] == '-' :
