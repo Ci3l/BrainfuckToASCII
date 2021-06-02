@@ -4,25 +4,47 @@ def Interpretor(code, entrees = None):
             for input in entrees:
                 input = int(input)
     code = [char for char in code]
-    iteration = False
-    array = [0]
+    i = 0
+    array = [i]
     l = 0
-    while len(code)>0:
-        if code[0] == '-' :
+    while len(code)>i:
+        print(i,array)
+        print(code[i])
+        if code[i] == '-' :
             array[l] = array[l] - 1
-        if code[0] == '+' :
+        if code[i] == '+' :
             array[l] = array[l] + 1
-        if code[0] == '[' :
-            iteration = True #get all the things in the [] and do the while thing
-        #if code[0] == ']' :
-        #    iteration = False
-        if code[0] == '<' :
+        if code[i] == '[' :
+            limit = code.index(']')
+            codeInIteration = []
+            h = i + 1
+            while h < limit :
+                codeInIteration.append(code[h])
+                h = h + 1
+            print(codeInIteration)
+            e = 0
+            while array[l] != 0 :
+                if codeInIteration[e] == '-' :
+                    array[l] = array[l] - 1
+                if codeInIteration[e] == '+' :
+                    array[l] = array[l] + 1
+                if codeInIteration[e] == '<' :
+                    l = l - 1
+                if codeInIteration[e] == '>' :
+                    l = l + 1
+                e = e + 1
+                if  e == len(codeInIteration)  :
+                    e = 0
+            i = i + (limit - (i))
+            print(str(i) + '+' + '(' + str(limit) + '+' +  str(h) + ')')
+        if code[i] == '<' :
             l = l - 1
-        if code[0] == '>' :
+        if code[i] == '>' :
             l = l + 1
-        if code[0] == ',' :
-            array[l] = entrees[0]
-            pop(0)
-        if code[0] == '.' :
+        if code[i] == ',' :
+            array[l] = entrees[i]
+            pop(i)
+        if code[i] == '.' :
             print('int -> {} char/ASCII -> {}'.format(array[l],chr(array[l])))
-        code.pop(0)
+        i = i + 1
+Interpretor("+++[-].")
