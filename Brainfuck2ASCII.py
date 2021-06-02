@@ -23,15 +23,16 @@ def Interpretor(code, entrees = None):
                 h = h + 1
             print(codeInIteration)
             e = 0
-            while array[l] != 0 :
+            lbis = l
+            while array[lbis] != 0 :
                 if codeInIteration[e] == '-' :
-                    array[l] = array[l] - 1
+                    array[lbis] = array[lbis] - 1
                 if codeInIteration[e] == '+' :
-                    array[l] = array[l] + 1
+                    array[lbis] = array[lbis] + 1
                 if codeInIteration[e] == '<' :
-                    l = l - 1
+                    lbis = lbis - 1
                 if codeInIteration[e] == '>' :
-                    l = l + 1
+                    lbis =lbis + 1
                 e = e + 1
                 if  e == len(codeInIteration)  :
                     e = 0
@@ -40,11 +41,16 @@ def Interpretor(code, entrees = None):
         if code[i] == '<' :
             l = l - 1
         if code[i] == '>' :
-            l = l + 1
+            if (len(array)-1) < (l+1) :
+                array.append(0)
+                l = l + 1
+            else : l = l + 1
         if code[i] == ',' :
             array[l] = entrees[i]
             pop(i)
         if code[i] == '.' :
             print('int -> {} char/ASCII -> {}'.format(array[l],chr(array[l])))
         i = i + 1
-Interpretor("+++[-].")
+Interpretor(""">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.[-]
+>++++++++[<++++>-] <.>+++++++++++[<++++++++>-]<-.--------.+++
+.------.--------.[-]>++++++++[<++++>- ]<+.[-]++++++++++.""")
