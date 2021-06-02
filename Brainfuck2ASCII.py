@@ -1,16 +1,16 @@
-def Interpretor(code, entrees = None):
+def BrainF(code, entrees = None):
     code = str(code)
-    if entrees != None :
+    if entrees != None : #make a list of integers with the inputs
         entrees = str(entrees)
         entrees = entrees.split(" ")
         for input in entrees:
             input = int(input)
-    code = [char for char in code]
-    result = []
-    i = 0
-    array = [i]
-    l = 0
-    g = 0
+    code = [char for char in code] #make a list of char with the input brainfuck code
+    result = [] #the full result in ASCII
+    i = 0 #number of iterations to read your code
+    array = [i]# the array you're 'writing in'
+    l = 0#the memory pointer index in array
+    g = 0#on which iteration we are in mean on which '[]'
     while len(code)>i:
         print(i,array)
         print(code[i])
@@ -19,7 +19,7 @@ def Interpretor(code, entrees = None):
         if code[i] == '+' :
             array[l] = array[l] + 1
         if code[i] == '[' :
-            limitsOfIterationList = [i for i,x in enumerate(code) if x==']']
+            limitsOfIterationList = [i for i,x in enumerate(code) if x==']']#index of the ']' in your code to know where to stop the iteration
             print('limitList',limitsOfIterationList)
             limitOfIteration= limitsOfIterationList[g]
             codeInIteration = []
@@ -28,7 +28,7 @@ def Interpretor(code, entrees = None):
                 codeInIteration.append(code[h])
                 h = h + 1
             print(codeInIteration)
-            lbis = l
+            lbis = l#to keep an eye on the original postion of the pointer to know when it's equal to 0
             e = 0
             while array[lbis] != 0 :
                 if codeInIteration[e] == '-' :
@@ -48,7 +48,7 @@ def Interpretor(code, entrees = None):
             l = l - 1
         if code[i] == '>' :
             if (len(array)-1) < (l+1) :
-                array.append(0)
+                array.append(0)#we've to had a 0 to not be out of range 
                 l = l + 1
             else : l = l + 1
         if code[i] == ',' :
@@ -60,6 +60,3 @@ def Interpretor(code, entrees = None):
         i = i + 1
     for char in result :
         print(char,end ='')
-Interpretor(""">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.[-]
->++++++++[<++++>-] <.>+++++++++++[<++++++++>-]<-.--------.+++
-.------.--------.[-]>++++++++[<++++>- ]<+.[-]++++++++++.""")
