@@ -5,6 +5,7 @@ def BrainF(code, entrees = None):
         entrees = entrees.split(" ")
         for input in entrees:
             input = int(input)
+    y = 0 #where we are in the input/entrees list
     code = [char for char in code] #make a list of char with the input brainfuck code
     result = [] #the full result in ASCII
     i = 0 #number of iterations to read your code
@@ -48,12 +49,11 @@ def BrainF(code, entrees = None):
             l = l - 1
         if code[i] == '>' :
             if (len(array)-1) < (l+1) :
-                array.append(0)#we've to had a 0 to not be out of range 
+                array.append(0)#we've to had a 0 to not be out of range
                 l = l + 1
             else : l = l + 1
         if code[i] == ',' :
-            array[l] = entrees[i]
-            pop(i)
+            array[l] = int(entrees[y])
         if code[i] == '.' :
             print('int -> {} char/ASCII -> {}'.format(array[l],chr(array[l])))
             result.append(chr(array[l]))
