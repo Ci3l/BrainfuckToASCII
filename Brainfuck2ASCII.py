@@ -7,6 +7,7 @@ def Interpretor(code, entrees = None):
     i = 0
     array = [i]
     l = 0
+    g = 0
     while len(code)>i:
         print(i,array)
         print(code[i])
@@ -15,28 +16,31 @@ def Interpretor(code, entrees = None):
         if code[i] == '+' :
             array[l] = array[l] + 1
         if code[i] == '[' :
-            limit = code.index(']')
+            limitList = [i for i,x in enumerate(code) if x==']']
+            print('limitList',limitList)
+            limit = limitList[g]
             codeInIteration = []
             h = i + 1
             while h < limit :
                 codeInIteration.append(code[h])
                 h = h + 1
             print(codeInIteration)
-            e = 0
             lbis = l
+            e = 0
             while array[lbis] != 0 :
                 if codeInIteration[e] == '-' :
-                    array[lbis] = array[lbis] - 1
+                    array[l] = array[l] - 1
                 if codeInIteration[e] == '+' :
-                    array[lbis] = array[lbis] + 1
+                    array[l] = array[l] + 1
                 if codeInIteration[e] == '<' :
-                    lbis = lbis - 1
+                    l = l - 1
                 if codeInIteration[e] == '>' :
-                    lbis =lbis + 1
+                    l =l + 1
                 e = e + 1
                 if  e == len(codeInIteration)  :
                     e = 0
             i = i + (limit - (i))
+            g = g + 1
             print(str(i) + '+' + '(' + str(limit) + '+' +  str(h) + ')')
         if code[i] == '<' :
             l = l - 1
