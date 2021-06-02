@@ -13,22 +13,19 @@ def BrainF(code, entrees = None):
     l = 0#the memory pointer index in array
     g = 0#on which iteration we are in mean on which '[]'
     while len(code)>i:
-        print(i,array)
-        print(code[i])
+        print(array)
         if code[i] == '-' :
             array[l] = array[l] - 1
         if code[i] == '+' :
             array[l] = array[l] + 1
         if code[i] == '[' :
             limitsOfIterationList = [i for i,x in enumerate(code) if x==']']#index of the ']' in your code to know where to stop the iteration
-            print('limitList',limitsOfIterationList)
             limitOfIteration= limitsOfIterationList[g]
             codeInIteration = []
             h = i + 1
             while h < limitOfIteration:
                 codeInIteration.append(code[h])
                 h = h + 1
-            print(codeInIteration)
             lbis = l#to keep an eye on the original postion of the pointer to know when it's equal to 0
             e = 0
             while array[lbis] != 0 :
