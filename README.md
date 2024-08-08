@@ -18,8 +18,9 @@ To use the script, call the `BrainF` function with the Brainfuck code and option
 
 ```python
 def BrainF(code, entrees = None):
-    # Your Brainfuck code here
+    
 ```
+
 ### Parameters
 * **'code'**: A string containing Brainfuck code.
 * **'entrees'**: (Optional) A space-separated string of integers to be used with the Brainfuck , command.
@@ -32,6 +33,9 @@ This example translates Brainfuck code to ASCII characters, outputting "Hello Wo
 
 ### Demo
 To see the project in action, you can access the Brainfuck to ASCII algorithm on the NumWorks Workshop [here](https://workshop.numworks.com/python/ciel/brainfuck2ascii).
+
+### Related Projects
+[TextToBrainfuckTranslator](https://github.com/Ci3l/TextToBrainfuckTranslator): A Python-based translator that converts arbitrary text input into optimized Brainfuck code. This project was created to validate my understanding of ASCII encoding and Brainfuck, and to refine my Python programming skills. The goal of this tool is to generate the most compact Brainfuck code possible for any given string.
 
 ### Participation
 I welcome contributions and suggestions for improving the script. Feel free to submit a pull request, open an issue, or send your feedback to [email](emailto:poire.erwan2005@gmail.com).
